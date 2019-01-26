@@ -13,6 +13,16 @@ public class Array<E> {
 	private E[] data;
 	private int size;
 
+	/**
+	 * 扩容率
+	 */
+	private static final int EXPANSION_RADIO = 2;
+
+	/**
+	 * 默认的容量
+	 */
+	private static final int DEFAULT_CAPACITY = 10;
+
 	//构造函数,传入数组的容量capacity构造Array
 	public Array(int capacity){
 		data = (E[])new Object[capacity];
@@ -21,7 +31,7 @@ public class Array<E> {
 
 	//无参数的构造函数,默认数组的容量capacity = 10
 	public Array() {
-		this(10);
+		this(DEFAULT_CAPACITY);
 	}
 
 	public Array(E[] arr){
