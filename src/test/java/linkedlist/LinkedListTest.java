@@ -16,6 +16,10 @@ public class LinkedListTest {
 	@Test
 	public void test(){
 		LinkedList<Integer> linkedList = new LinkedList<Integer>();
+
+		boolean contains = linkedList.contains(2);
+		System.out.println(contains);
+
 		for (int i = 0; i < 5; i++) {
 			linkedList.addFirst(i);
 			System.out.println(linkedList.toString());
@@ -36,5 +40,8 @@ public class LinkedListTest {
 
 		linkedList.removeElement(2);
 		System.out.println(linkedList);
+
+		boolean contains2 = linkedList.contains(3);
+		System.out.println(contains2);
 	}
 }

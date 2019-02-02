@@ -1,0 +1,15 @@
+均摊时间复杂度：
+--- BinarySearchTreeSet
+
+
+    ---contains:    O(h)= O(log n)
+    ---add:         O(h)= O(log n)
+    ---remove:      O(h)= O(log n)
+
+
+
+--- LinkedListSet
+
+    ---contains:    O(n)
+    ---add:         O(n)
+    ---remove:      O(n)

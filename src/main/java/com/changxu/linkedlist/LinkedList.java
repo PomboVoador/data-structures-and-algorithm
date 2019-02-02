@@ -46,7 +46,7 @@ public class LinkedList<E> {
 	private int size;
 
 	public LinkedList() {
-		dummyHead = new Node(null, null);
+		dummyHead = new Node();
 		size = 0;
 	}
 
@@ -73,10 +73,11 @@ public class LinkedList<E> {
 	 */
 	public boolean contains(E e){
 		Node currentNode = dummyHead.next;
-		while (currentNode.next != null){
+		while (currentNode != null){
 			if (currentNode.e.equals(e)){
 				return true;
 			}
+			currentNode = currentNode.next;
 		}
 		return false;
 	}
@@ -86,8 +87,8 @@ public class LinkedList<E> {
 	 * 在链表表头添加新的元素
 	 * @param e 待添加的元素
 	 */
-	public void addFirst(E e){
-		add(0, e);
+	public boolean addFirst(E e){
+		return add(0, e);
 	}
 
 	/**
@@ -96,7 +97,7 @@ public class LinkedList<E> {
 	 * @param index
 	 * @param e
 	 */
-	public void add(int index, E e){
+	public boolean add(int index, E e){
 		if (index < 0 || index > size){
 			throw new IllegalArgumentException("Add failed.Illegal index.");
 		}
@@ -111,6 +112,7 @@ public class LinkedList<E> {
 
 		prev.next = new Node(e, prev.next);
 		size ++;
+		return true;
 	}
 
 	/**
@@ -215,10 +217,12 @@ public class LinkedList<E> {
 	 * 从链表中删除元素e
 	 * @param e
 	 */
-	public void removeElement(E e){
+	public boolean removeElement(E e){
+		boolean isRemove = false;
 		Node prev = this.dummyHead;
 		while (prev.next != null){
 			if (prev.next.e.equals(e)){
+				isRemove = true;
 				break;
 			}
 			prev = prev.next;
@@ -229,6 +233,7 @@ public class LinkedList<E> {
 			delNode.next = null;
 			size --;
 		}
+		return isRemove;
 	}
 
 	@Override

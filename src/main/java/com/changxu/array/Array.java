@@ -23,13 +23,18 @@ public class Array<E> {
 	 */
 	private static final int DEFAULT_CAPACITY = 10;
 
-	//构造函数,传入数组的容量capacity构造Array
+	/**
+	 * 构造函数,传入数组的容量capacity构造Array
+	 * @param capacity
+	 */
 	public Array(int capacity){
 		data = (E[])new Object[capacity];
 		size = 0;
 	}
 
-	//无参数的构造函数,默认数组的容量capacity = 10
+	/**
+	 * 无参数的构造函数,默认数组的容量capacity = 10
+	 */
 	public Array() {
 		this(DEFAULT_CAPACITY);
 	}
@@ -104,7 +109,7 @@ public class Array<E> {
 */
 
 		if (size == data.length){
-			resize(2 * data.length);
+			resize(EXPANSION_RADIO * data.length);
 		}
 
 		for (int i = size - 1; i >= index ; i--) {
@@ -216,8 +221,9 @@ public class Array<E> {
 			resize(data.length / 2);
 		}
 */
-		if (size == data.length / 4 && data.length / 2 != 0){   //data.length == 1 时, resize(0) 是错误的,所以需要加上限制条件data.length / 2 != 0
-			resize(data.length / 2);
+		//data.length == 1 时, resize(0) 是错误的,所以需要加上限制条件data.length / 2 != 0
+		if (size == data.length / (EXPANSION_RADIO * EXPANSION_RADIO) && data.length / EXPANSION_RADIO != 0){
+			resize(data.length / EXPANSION_RADIO);
 		}
 		return returnElement;
 	}
