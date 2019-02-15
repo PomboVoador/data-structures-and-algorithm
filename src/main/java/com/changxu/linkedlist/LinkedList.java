@@ -16,17 +16,17 @@ public class LinkedList<E> {
 		private E e;
 		private Node next;
 
-		public Node(E e, Node next) {
-			this.e = e;
-			this.next = next;
+		public Node() {
+			this(null, null);
 		}
 
 		public Node(E e) {
 			this(e, null);
 		}
 
-		public Node() {
-			this(null, null);
+		public Node(E e, Node next) {
+			this.e = e;
+			this.next = next;
 		}
 
 		@Override
@@ -74,7 +74,7 @@ public class LinkedList<E> {
 	public boolean contains(E e){
 		Node currentNode = dummyHead.next;
 		while (currentNode != null){
-			if (currentNode.e.equals(e)){
+			if (e.equals(currentNode.e)){
 				return true;
 			}
 			currentNode = currentNode.next;
@@ -97,7 +97,7 @@ public class LinkedList<E> {
 	 * @param index
 	 * @param e
 	 */
-	public boolean add(int index, E e){
+	private boolean add(int index, E e){
 		if (index < 0 || index > size){
 			throw new IllegalArgumentException("Add failed.Illegal index.");
 		}
@@ -187,12 +187,12 @@ public class LinkedList<E> {
 			prev = prev.next;
 		}
 
-		Node returnNode = prev.next;
-		prev.next = returnNode.next;
+		Node delNode = prev.next;
+		prev.next = delNode.next;
 
-		returnNode.next = null;
+		delNode.next = null;
 		size --;
-		return returnNode.e;
+		return delNode.e;
 	}
 
 	/**
@@ -221,7 +221,7 @@ public class LinkedList<E> {
 		boolean isRemove = false;
 		Node prev = this.dummyHead;
 		while (prev.next != null){
-			if (prev.next.e.equals(e)){
+			if (e.equals(prev.next.e)){
 				isRemove = true;
 				break;
 			}
