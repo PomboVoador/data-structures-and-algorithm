@@ -97,7 +97,7 @@ public class LinkedList<E> {
 	 * @param index
 	 * @param e
 	 */
-	private boolean add(int index, E e){
+	public boolean add(int index, E e){
 		if (index < 0 || index > size){
 			throw new IllegalArgumentException("Add failed.Illegal index.");
 		}
